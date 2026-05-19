@@ -1,119 +1,250 @@
-= GrapesJS URL Manager Plugin
-:toc: macro
-:icons: font
-:source-highlighter: coderay
-:sectnums:
+# 🚀 GrapesJS URL Manager Plugin
 
-https://github.com/Buddyx07/grapesjs-url-manager[grapesjs-url-manager]
+<div align="center">
 
-A plugin for GrapesJS that simplifies hyperlink management by offering a customizable tab UI to configure URLs, emails, WhatsApp messages, and telephone links — with SPA support.
+![npm version](https://img.shields.io/npm/v/grapesjs-url-manager?style=for-the-badge)
+![License](https://img.shields.io/github/license/Buddyx07/grapesjs-url-manager?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/Buddyx07/grapesjs-url-manager?style=for-the-badge)
+![GrapesJS](https://img.shields.io/badge/GrapesJS-Plugin-purple?style=for-the-badge)
+
+### 🔗 Smart Hyperlink Management for GrapesJS
+
+A modern GrapesJS plugin that transforms boring link editing into a clean, powerful, and intuitive experience.
+
+Configure:
+
+🌐 URLs • 📧 Emails • 💬 WhatsApp • 📞 Phone Links
+with live updates, SPA routing support, and a beautiful tabbed UI.
+
+</div>
 
 ---
 
-toc::[]
+# ✨ Why Use This Plugin?
 
-== ✨ Features
+Managing links inside GrapesJS can become repetitive and messy.
 
-* ✅ Tab-based UI for different link types:
-** URL
-** Email
-** WhatsApp
-** Phone
-* ✅ Inline SVG icons for each tab
-* ✅ Real-time href generation
-* ✅ Optional SPA navigation toggle
-* ✅ "Open in new tab" trait
-* ✅ Works with GrapesJS `<a>` (link) component
+**GrapesJS URL Manager** solves that by providing:
 
-== 🔧 Requirements
+✅ A sleek tab-based interface
+✅ Dynamic input fields
+✅ Real-time `href` generation
+✅ SPA navigation support
+✅ Inline SVG icons
+✅ Better UX for link management
 
-* GrapesJS ^0.20.0+
-* Modern browser (Chrome, Edge, Firefox)
+---
 
-== 🔌 Usage
+# 🎯 Features
 
-[source, javascript]
-----
+<table>
+<tr>
+<td width="50%">
+
+## 🔗 Multiple Link Types
+
+Easily switch between:
+
+* 🌐 Website URLs
+* 📧 Email Links
+* 💬 WhatsApp Messages
+* 📞 Telephone Links
+
+</td>
+
+<td width="50%">
+
+## ⚡ Smart Behaviour
+
+* Live `href` updates
+* Open in new tab option
+* SPA toggle support
+* Dynamic trait rendering
+
+</td>
+</tr>
+</table>
+
+---
+
+# 🖼️ Preview
+
+## 🌐 URL Block in Editor
+
+![URL Block](src/Assets/urlTab.jpg)
+
+---
+
+## 🎨 Tabbed Interface with Icons
+
+![Tabbed Interface](src/Assets/Tabbed%20url%20Icons%20.jpg)
+
+---
+
+## ⚡ SPA Routing Toggle
+
+![SPA Routing](src/Assets/SPA%20Routing.jpg)
+
+---
+
+## 🧩 Final HTML Output
+
+![HTML Output](src/Assets/Link%20added.jpg)
+
+---
+
+## 📧 Email Interface
+
+![Email Interface](src/Assets/Email%20Interface.jpg)
+
+---
+
+## 💬 WhatsApp Message Builder
+
+![WhatsApp Interface](src/Assets/Whatsapp%20Interface.jpg)
+
+---
+
+## 📞 Telephone Interface
+
+![Telephone Interface](src/Assets/Telephone%20Interface.jpg)
+
+---
+
+# 📦 Installation
+
+## Using npm
+
+```bash
+npm install grapesjs-url-manager
+```
+
+## Using yarn
+
+```bash
+yarn add grapesjs-url-manager
+```
+
+---
+
+# 🔌 Usage
+
+```javascript
 import grapesjs from 'grapesjs';
-import urlManagerComponent from './src/component.js';
-import urlManagerTraits from './src/trait.js';
+
+import urlManagerComponent from 'grapesjs-url-manager/src/component';
+import urlManagerTraits from 'grapesjs-url-manager/src/trait';
 
 grapesjs.init({
   container: '#gjs',
-  plugins: [urlManagerComponent, urlManagerTraits],
+
+  plugins: [
+    urlManagerComponent,
+    urlManagerTraits,
+  ],
 });
-----
+```
 
-To preview the plugin with GrapesJS:
+---
 
-[source, bash]
-----
-npx grapesjs-cli serve
-----
+# ⚙️ How It Works
 
-== 🧠 How It Works
+When a user selects a link component:
 
-When a link component is selected:
+```mermaid
+flowchart LR
 
-. A _smart tabbed panel_ appears in the trait manager.
-. Choose between URL, Email, WhatsApp, or Phone.
-. Input fields change based on the tab selected.
-. SPA toggle appears only for URL.
-. All link changes reflect live in the component.
+A[Select Link Component]
+--> B[Open Trait Panel]
 
-== 🖼️ Screenshots
+B --> C{Choose Link Type}
 
-Url Block in Editor:
-![Url Block](src/Assets/urlTab.jpg)
+C --> D[🌐 URL]
+C --> E[📧 Email]
+C --> F[💬 WhatsApp]
+C --> G[📞 Phone]
 
-Tabbed interface with link type icons:
-![Tabbed Interface](<src/Assets/Tabbed url Icons .jpg>)
+D --> H[Generate href]
+E --> H
+F --> H
+G --> H
 
-SPA routing toggle for internal links:
-![SPA Routing](<src/Assets/SPA Routing.jpg>)
+H --> I[Update Component Live]
+```
 
-Final rendered HTML output:
-![Link Added to HTMl](<src/Assets/Link added.jpg>)
+---
 
-Email Link Input Interface:
-![Email Interafce](<src/Assets/Email Interface.jpg>)
+# 🔥 Generated Link Formats
 
-WhatsApp Massage Builder:
-![WhatsApp Interface](<src/Assets/Whatsapp Interface.jpg>)
+| Link Type   | Generated Output                        |
+| ----------- | --------------------------------------- |
+| 🌐 URL      | `https://example.com`                   |
+| 📧 Email    | `mailto:user@example.com`               |
+| 💬 WhatsApp | `https://wa.me/911234567890?text=Hello` |
+| 📞 Phone    | `tel:+911234567890`                     |
 
-Phone Number Input:
-![Telephone Interface](<src/Assets/Telephone Interface.jpg>)
+---
 
-== 📁 File Structure
+# 📁 Project Structure
 
-[source, text]
-----
+```text
 grapesjs-url-manager/
+│
 ├── src/
-│   ├── component.js                ← Link component logic
-│   └── trait.js                    ← Tabbed trait + SPA toggle
+│   ├── component.js
+│   ├── trait.js
+│   └── Assets/
+│
 ├── dist/
-│   └── grapesjs-url-manager.min.js ← Optional bundle
-├── index.html                     ← Demo file
+│   └── grapesjs-url-manager.min.js
+│
+├── index.html
 ├── package.json
-├── README.adoc
+├── README.md
 └── LICENSE
-----
+```
 
-== 🙌 Contributing
+---
 
-Pull requests are welcome.
+# 🚀 Roadmap
 
-Report issues or request features at:
-https://github.com/Buddyx07/grapesjs-url-manager/issues
+Planned features for upcoming releases:
 
-== 🧩 Future Plans
+* ✅ URL validation
+* ✅ Email validation
+* ✅ Link preview popup
+* ✅ Reusable presets
+* ✅ Tooltip editor
+* ✅ Custom icons
+* ✅ Copy link support
 
-* Add link validation (email/URL format)
-* Link preview popup
-* Save frequently used presets
-* Tooltip editor
+---
 
-== 👨‍💻 Author
+# 🤝 Contributing
 
-Developed by https://github.com/Buddyx07[Buddyx07]
+Contributions are always welcome!
+
+## Steps
+
+```bash
+# Fork the repository
+
+# Clone your fork
+git clone YOUR_REPOSITORY_URL
+
+# Install dependencies
+npm install
+
+# Start development
+npm run dev
+```
+
+---
+
+<div align="center">
+
+# ❤️ Built for the GrapesJS Community
+
+Made with passion by Buddyx07
+
+</div>
